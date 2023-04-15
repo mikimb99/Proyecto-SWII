@@ -1,0 +1,344 @@
+openapi: 3.0.3
+info:
+  title: API de animales
+  description: |
+    # Título
+    API para animales que permite
+    operaciones CRUD con animales.
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+  description: Servidor local de pruebas
+
+tags:
+- name: animal
+  description: Animales
+
+paths:
+  /animales:
+    get:
+      tags:
+      - animal
+      summary: Obtener todos los animales
+      description: Obtener un listado de todos las animales
+      operationId: getAnimales
+      parameters:
+      - name: page
+        in: query
+        description: pagina solicitada
+        required: false
+        style: form
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+      - name: page_size
+        in: query
+        description: Cantidad de animales solicitados
+        required: false
+        style: form
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+      - name: search
+        in: query
+        description: animal a buscar
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 1
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/animales_pagination'
+
+    post:
+      tags:
+      - animal
+      summary: Crear un nuevo animal
+      description: Crear animal
+      operationId: createAnimal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/animal_editada'
+      responses:
+        "201":
+          description: Animal creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/info_nuevo_animal'
+        default:
+          description: Error al crear el animal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  
+    get:
+      tags:
+      - animal
+      summary: Obtener información de un animal concreto
+      description: Obtener info
+      operationId: getAnimal
+      parameters:
+      - name: id
+        in: path
+        description: ID del animal
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/animal'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/animal'
+        default:
+          description: Error al acceder al animal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/error'
+
+    put:
+      tags:
+      - receta
+      summary: Modificar información de un animal concreto
+      description: Modificar animal
+      operationId: updateAnimal
+      parameters:
+      - name: id
+        in: path
+        description: ID del animal
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/animal_editado'
+      responses:
+        "201":
+          description: Ok
+        default:
+          description: Error al acceder al animal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+ 
+    delete:
+      tags:
+      - aninal
+      summary: Borrar un animal específico
+      description: Borrar animal
+      operationId: deleteAnimal
+      parameters:
+      - name: id
+        in: path
+        description: ID del animal
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+      responses:
+        "200":
+          description: Ok
+        default:
+          description: Error al acceder al animal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  
+  
+components:
+  schemas:
+    id:
+      minimum: 0
+      type: integer
+   
+    error:
+      type: object
+      properties:
+        descripcion:
+          type: string
+        codigo:
+          type: integer
+      example:
+        descripcion: Datos introducidos erroneos
+        codigo: 400
+    info_nuevo_elemento:
+      type: object
+      properties:
+        _id:
+          $ref: '#/components/schemas/id'
+      example:
+        id: 123
+    animales_pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        page_size:
+          type: integer
+        page_count:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/animal'
+      example:
+        data:
+        - _id: 1
+          Title: Girafa
+          Altura_media: 5,5 metros 
+          Peso: 850 kg
+          Habitat:
+          - África
+          - Somalia
+        - _id: 2
+          Title: Girafa
+          Altura_media: 5,5 metros 
+          Peso: 850 kg
+          Habitat:
+          - África
+          - Somalia
+        page: 0
+        page_count: 2
+        page_size: 6
+    animal:
+      type: object
+      properties:
+        _id:
+          type: integer
+          minimum: 0
+        Altura_media:
+          type: string
+          nullable: true
+        Peso:
+          type: string
+        Habitat:
+          $ref: '#/components/schemas/habitat'
+        Title:
+          type: string
+      required:
+        - _id
+        - Altura_media
+        - Peso
+        - Habitat
+        - Title
+      example:
+        - _id: 1
+          Title: Girafa
+          Altura_media: 5,5 metros 
+          Peso: 850 kg
+          Habitat:
+          - África
+          - Somalia
+    animal_editado:
+      type: object
+      properties:
+        Title:
+          type: string
+        Altura_media:
+          type: string
+          nullable: true
+        Peso:
+          type: string
+        Habitat:
+          $ref: '#/components/schemas/habitat'
+      required:
+        - Title
+        - Altura_media
+        - Peso
+        - Habitat
+        
+      example:
+        - _id: 1
+          Title: Girafa
+          Altura_media: 5,5 metros 
+          Peso: 850 kg
+          Habitat:
+          - África
+          - Somalia
+    habitat:
+      type: array
+      items:
+        $ref: '#/components/schemas/habitat'
+      xml:
+        wrapped: true
+    habitat:
+      type: string
+      example: Somalia
+    
+  parameters:
+    id:
+      name: id
+      in: path
+      description: ID del animal
+      required: true
+      style: simple
+      explode: false
+      schema:
+        $ref: '#/components/schemas/id'
+    habitat:
+      name: habitat
+      in: query
+      description: Nombre del habitat
+      required: true
+      style: form
+      explode: true
+      schema:
+        $ref: '#/components/schemas/lugar'
+    page:
+      name: page
+      in: query
+      description: pagina solicitada
+      required: false
+      style: form
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+    page_size:
+      name: page_size
+      in: query
+      description: Cantidad de animales solicitados
+      required: false
+      style: form
+      explode: false
+      schema:
+        minimum: 1
+        type: integer
+    search:
+      name: search
+      in: query
+      description: animal a buscar
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
