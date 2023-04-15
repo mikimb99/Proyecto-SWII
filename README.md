@@ -1,2 +1,6 @@
 # Proyecto-SWII
-Los miembros del grupo son: Diego Herrero, Javier Requejo y Miguel Melero y vamos a realizarlo de animales
+Los miembros del grupo son: Diego Herrero, Javier Requejo y Miguel Melero.
+
+## Descripción proyecto
+Api de animales.
+La aplicación va a permitir realizar un crud de animales
