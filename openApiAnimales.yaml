@@ -120,7 +120,7 @@ paths:
 
     put:
       tags:
-      - receta
+      - animal
       summary: Modificar información de un animal concreto
       description: Modificar animal
       operationId: updateAnimal
