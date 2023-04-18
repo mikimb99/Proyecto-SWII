@@ -82,7 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-  
+  /animales/{id}:
     get:
       tags:
       - animal
@@ -150,7 +150,7 @@ paths:
  
     delete:
       tags:
-      - aninal
+      - animal
       summary: Borrar un animal específico
       description: Borrar animal
       operationId: deleteAnimal
@@ -173,7 +173,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
   
-  
+  /animales/nuevos:
+    get:
+      tags:
+        - receta
+      summary: Obtener Un listado de los nuevos animales
+      description: Obtiene un listado con los nuevos animales y sus enlaces
+      operationId: getNuevos
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/nuevos'
+        default:
+          description: Error al acceder a los nuevos animales
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 components:
   schemas:
     id:
