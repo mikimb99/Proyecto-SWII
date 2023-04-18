@@ -117,6 +117,60 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/error'
+  /animales/raza:
+    get:
+      tags:
+        - animal
+      summary: Obtener animales por raza
+      description: Obtener un listado de animales por raza
+      operationId: getAnimalesPorRaza
+      parameters:
+        - name: raza
+          in: query
+          description: Nombre de la raza
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/animales_pagination'
+        default:
+          description: Error al obtener los animales por raza
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /animales/especie:
+    get:
+      tags:
+        - animal
+      summary: Obtener animales por especie
+      description: Obtener un listado de animales por especie
+      operationId: getAnimalesPorEspecie
+      parameters:
+        - name: especie
+          in: query
+          description: Nombre de la especie
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/especie'
+        default:
+          description: Error al obtener los animales por especie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
 
     put:
       tags:
@@ -277,6 +331,50 @@ components:
           Habitat:
           - África
           - Somalia
+    especie:
+      type: object
+        properties:
+          especie:
+            type: string
+          animales:
+            type: array
+            items:
+              $ref: '#/components/schemas/animal'
+        required:
+          - especie
+          - animales
+    nuevo:
+      type: object
+        properties:
+          _id:
+            type: integer
+            minimum: 0
+          Altura_media:
+            type: string
+            nullable: true
+          Peso:
+            type: string
+          Habitat:
+            $ref: '#/components/schemas/habitat'
+          Title:
+            type: string
+        required:
+          - _id
+          - Altura_media
+          - Peso
+          - Habitat
+          - Title
+        example:
+          - _id: 2
+            Title: Hipopótamo
+            Altura_media: 1,5 metros
+            Peso: 4000 kg
+            Habitat:
+              - África Central
+    nuevos:
+      type: array
+      items:
+        $ref: '#components/schemas/nuevo'
     animal_editado:
       type: object
       properties:
