@@ -1,0 +1,22 @@
+{
+  "name": "proyecto-swii",
+  "version": "1.0.0",
+  "description": "Los miembros del grupo son: Diego Herrero, Javier Requejo y Miguel Melero.",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikimb99/Proyecto-SWII.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikimb99/Proyecto-SWII/issues"
+  },
+  "homepage": "https://github.com/mikimb99/Proyecto-SWII#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
