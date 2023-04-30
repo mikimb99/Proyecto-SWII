@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mikimb99/Proyecto-SWII#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^5.3.0"
   }
 }
