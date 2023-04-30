@@ -104,98 +104,98 @@
     "habitat": "Bosque de bambú"
   },
   {
-    "id": 16,
+    "_id": 16,
     "title": "Tortuga",
     "altura_media": 0.3,
     "peso": 50,
     "habitat": "Agua dulce"
   },
   {
-    "id": 17,
+    "_id": 17,
     "title": "Águila",
     "altura_media": 0.9,
     "peso": 4,
     "habitat": "Montañas"
   },
   {
-    "id": 18,
+    "_id": 18,
     "title": "Búho",
     "altura_media": 0.4,
     "peso": 1.5,
     "habitat": "Bosques"
   },
   {
-    "id": 19,
+    "_id": 19,
     "title": "Serpiente",
     "altura_media": 1.5,
     "peso": 5,
     "habitat": "Desierto"
   },
   {
-    "id": 20,
+    "_id": 20,
     "title": "Lobo",
     "altura_media": 0.8,
     "peso": 40,
     "habitat": "Bosques"
   },
   {
-    "id": 21,
+    "_id": 21,
     "title": "Jaguar",
     "altura_media": 0.9,
     "peso": 60,
     "habitat": "Selva"
   },
   {
-    "id": 22,
+    "_id": 22,
     "title": "Puma",
     "altura_media": 0.7,
     "peso": 30,
     "habitat": "Montañas"
   },
   {
-    "id": 23,
+    "_id": 23,
     "title": "Canguro",
     "altura_media": 1.5,
     "peso": 70,
     "habitat": "Sabana"
   },
   {
-    "id": 24,
+    "_id": 24,
     "title": "Orangután",
     "altura_media": 1.5,
     "peso": 70,
     "habitat": "Selva"
   },
   {
-    "id": 25,
+    "_id": 25,
     "title": "Murciélago",
     "altura_media": 0.3,
     "peso": 0.02,
     "habitat": "Cuevas"
   },
   {
-    "id": 26,
+    "_id": 26,
     "title": "Coyote",
     "altura_media": 0.6,
     "peso": 15,
     "habitat": "Desierto"
   },
   {
-    "id": 27,
+    "_id": 27,
     "title": "Rana",
     "altura_media": 0.2,
     "peso": 0.01,
     "habitat": "Agua dulce"
   },
   {
-    "id": 28,
+    "_id": 28,
     "title": "Iguana",
     "altura_media": 1.0,
     "peso": 10,
     "habitat": "Desierto"
   },
   {
-    "id": 29,
+    "_id": 29,
     "title": "Pavo real",
     "altura_media": 1.0,
     "peso": 5,
