@@ -25,4 +25,4 @@ const main = async () => {
         client.close();
     }
 }
-main();
+
