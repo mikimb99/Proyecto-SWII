@@ -17,7 +17,7 @@ const collection = client.db(dbname).collection(collection_name);
 const allRegistros = async(client)=> {
   let result= await collection.find({}).toArray(function(err, res) {
     if (err) throw err;
-    client.close();
+   
   }); 
   console.log(result);
 }
@@ -26,13 +26,12 @@ const findOneRegistro = async(client,id)=>{
   console.log("FindOne");
   const idToFind = { _id: id };
   let result= await collection.findOne(idToFind);
-  client.close();
+  
   console.log(result);
 }
 
 
 const main = async () => {
-
     try {
       console.log("In")
       await connectToDatabase();
@@ -41,6 +40,8 @@ const main = async () => {
       
     } catch (err) {
       console.error(`Error finding documents: ${err}`);
-    } 
+    } finally{
+      client.close();
+    }
   }
   main();
