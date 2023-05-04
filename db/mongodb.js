@@ -22,6 +22,14 @@ const allRegistros = async(client)=> {
   console.log(result);
 }
 
+const findOneRegistro = async(client,id)=>{
+  console.log("FindOne");
+  const idToFind = { _id: id };
+  let result= await collection.findOne(idToFind);
+  client.close();
+  console.log(result);
+}
+
 
 const main = async () => {
 
@@ -29,6 +37,7 @@ const main = async () => {
       console.log("In")
       await connectToDatabase();
       await allRegistros(client);
+      await findOneRegistro(client,1);
       
     } catch (err) {
       console.error(`Error finding documents: ${err}`);
