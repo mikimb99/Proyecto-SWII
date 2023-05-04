@@ -4,9 +4,8 @@ const client = new MongoClient(uri);
 
 const connectToDatabase = async () => {
     try {
-      console.log("Conectar.")
       await client.connect();
-      console.log("Conectaddo!!")
+    
     } catch (e){
         console.error(e);
     }
@@ -16,16 +15,16 @@ const collection_name = "animales";
 const collection = client.db(dbname).collection(collection_name);
 
 const allRegistros = async(client)=> {
-  console.log("A buscar")
   let result= await collection.find({}).toArray(function(err, res) {
-    console.log("Encontrado");
     if (err) throw err;
     client.close();
-  }); console.log(result);
+  }); 
+  console.log(result);
 }
 
 
 const main = async () => {
+
     try {
       console.log("In")
       await connectToDatabase();

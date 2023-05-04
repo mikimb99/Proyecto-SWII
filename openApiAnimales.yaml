@@ -230,7 +230,7 @@ paths:
   /animales/nuevos:
     get:
       tags:
-        - receta
+        - animal
       summary: Obtener Un listado de los nuevos animales
       description: Obtiene un listado con los nuevos animales y sus enlaces
       operationId: getNuevos
