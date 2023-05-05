@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const { MongoClient, ObjectId} = require("mongodb");
 const uri = "mongodb://127.0.0.1";
 const client = new MongoClient(uri);
@@ -26,8 +27,7 @@ const findOneRegistro = async(client,id)=>{
   console.log("FindOne");
   const idToFind = { _id: id };
   let result= await collection.findOne(idToFind);
-  
-  console.log(result);
+  return result;
 }
 
 
@@ -36,7 +36,7 @@ const main = async () => {
       console.log("In")
       await connectToDatabase();
       await allRegistros(client);
-      await findOneRegistro(client,1);
+      await findOneRegistro(client,1).then(result => console.log(result));
       
     } catch (err) {
       console.error(`Error finding documents: ${err}`);
