@@ -11,9 +11,9 @@ module.exports={
             await client.connect();
             dbConnection = client.db();
             console.log("Succesfully connected to database");
-            process.exit();
         } catch (e){
             console.error(e);
+            process.exit();
         }
     },
 
