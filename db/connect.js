@@ -1,15 +1,30 @@
 const { MongoClient} = require("mongodb");
-const uri = "mongodb://127.0.0.1";
-const client = new MongoClient(uri);
+//const uri = "mongodb://127.0.0.1";
+const connectionString = process.env.MONGODB_URI;
+console.log(connectionString);
+const client = new MongoClient(connectionString);
+let dbConnection;
 
-const connectToDatabase = async () => {
-    try {
-        await client.connect();
-    } catch (e){
-        console.error(e);
-    }
+module.exports={
+    connectToDatabase : async () => {
+        try {
+            await client.connect();
+            dbConnection = client.db();
+            console.log("Succesfully connected to database");
+            process.exit();
+        } catch (e){
+            console.error(e);
+        }
+    },
+
+    getDb: function () {
+        return dbConnection;
+      }
+
 }
 
+
+/*
 const listDatabases = async (client) => {
     databasesList = await client.db().admin().listDatabases();
     console.log("Databases:");
@@ -25,4 +40,5 @@ const main = async () => {
         client.close();
     }
 }
+*/
 
