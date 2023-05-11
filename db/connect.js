@@ -1,5 +1,4 @@
 const { MongoClient} = require("mongodb");
-//const uri = "mongodb://127.0.0.1";
 const connectionString = process.env.MONGODB_URI;
 console.log(connectionString);
 const client = new MongoClient(connectionString);
