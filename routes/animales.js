@@ -4,16 +4,13 @@ const dbo = require('../db/connect');
 const {ObjectID, ObjectId} = require("mongodb");
 
 /* GET all animales. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+    console.log("/allAnimales")
     const connection = dbo.getDb();
-    connection.collection('animales').find({}).limit(5)
-      .toArray(function (err, result){
-        if (err){
-          res.status(400).send('Error al buscar animales');
-        } else {
-          res.json(result);
-        }
-      });
+    let result = await connection.collection('animales').find({}).limit(5)
+      .toArray()
+    res.json(result).status(200);
+      
 });
 
 module.exports = router;
