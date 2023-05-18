@@ -16,7 +16,7 @@ const collection_name = "animales";
 const collection = client.db(dbname).collection(collection_name);
 
 const allRegistros = async(client)=> {
-  let result= await collection.find({}).toArray(function(err, res) {
+  let result= await collection.find({}).limit(5).toArray(function(err, res) {
     if (err) throw err;
    
   }); 

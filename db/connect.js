@@ -8,7 +8,7 @@ module.exports={
     connectToDatabase : async () => {
         try {
             await client.connect();
-            dbConnection = client.db();
+            dbConnection = client.db("animales");
             console.log("Succesfully connected to database");
         } catch (e){
             console.error(e);
@@ -23,21 +23,4 @@ module.exports={
 }
 
 
-/*
-const listDatabases = async (client) => {
-    databasesList = await client.db().admin().listDatabases();
-    console.log("Databases:");
-    databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
-}
-const main = async () => {
-    try {
-        await connectToDatabase();
-        await listDatabases(client);
-    } catch (e){
-        console.error(e);
-    } finally {
-        client.close();
-    }
-}
-*/
 
