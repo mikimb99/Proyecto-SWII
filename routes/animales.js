@@ -28,10 +28,9 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//addPelicula()
+//addAnimal()
 router.post('/', async (req, res) => {
   const dbConnect = dbo.getDb();
-  console.log(req.body);
   const animal={
     "_id":req.body._id,
     "title": req.body.title,
@@ -39,10 +38,37 @@ router.post('/', async (req, res) => {
     "peso": req.body.peso,
     "habitat": req.body.habitat
   }
+  console.log(animal);
   let result = await dbConnect
     .collection('animales')
     .insertOne(animal);
   res.status(201).send(result);
+});
+
+//updateAnimalById()
+router.put('/:id', async (req, res) => {
+  const query = {_id: parseInt(req.params.id)};
+  const update = {$set:{
+    "title": req.body.title,
+    "altura_media": req.body.altura_media,
+    "peso": req.body.peso,
+    "habitat": req.body.habitat
+  }};
+  const dbConnect = dbo.getDb();
+  let result = await dbConnect
+    .collection('animales')
+    .updateOne(query, update);
+  res.status(200).send(result);
+});
+
+//deleteAnimalById()
+router.delete('/:id', async (req, res) => {
+  const query = {_id: parseInt(req.params.id)};
+  const dbConnect = dbo.getDb();
+  let result = await dbConnect
+    .collection('animales')
+    .deleteOne(query);
+  res.status(200).send(result);
 });
 
 module.exports = router;
