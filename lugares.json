@@ -1,6 +1,6 @@
-{
-  "lugares": [
+[
     {
+      "id": 1,
       "nombre": "Reserva Natural",
       "ubicacion": "Selva Amazónica, Brasil",
       "animales": ["Tigres", "Leones", "Elefantes", "Monos"],
@@ -9,6 +9,7 @@
       "visitantes_anuales": 100000
     },
     {
+      "id": 2,
       "nombre": "Parque Nacional",
       "ubicacion": "Serengeti, Tanzania",
       "animales": ["Leones", "Elefantes", "Jirafas", "Cebras"],
@@ -17,6 +18,7 @@
       "visitantes_anuales": 500000
     },
     {
+      "id": 3,
       "nombre": "Reserva Marina",
       "ubicacion": "Gran Barrera de Coral, Australia",
       "animales": ["Tiburones", "Tortugas Marinas", "Peces Tropicales"],
@@ -25,6 +27,7 @@
       "visitantes_anuales": 200000
     },
     {
+      "id": 4,
       "nombre": "Santuario de Vida Silvestre",
       "ubicacion": "Península de Osa, Costa Rica",
       "animales": ["Perezosos", "Monos", "Tucanes", "Jaguares"],
