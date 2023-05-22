@@ -57,10 +57,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/animales_pagination'
-
     post:
       tags:
-      - animal
+        - animal
       summary: Crear un nuevo animal
       description: Crear animal
       operationId: createAnimal
@@ -82,6 +81,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+  /lugares:
+    get:
+      summary: Obtener todos los lugares
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lugar'
+    post:
+        summary: Crear un nuevo lugar
+        description: Crear lugar
+        operationId: createLugar
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lugar_editada'
+        responses:
+            "201":
+              description: Lugar creado con éxito
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/info_nuevo_lugar'
+            default:
+              description: Error al crear el lugar
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/error'
+
+
   /animales/{id}:
     get:
       tags:
@@ -117,6 +152,96 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/error'
+  /lugares/{id}:
+    get:
+      tags:
+      - lugar
+      summary: Obtener información de un lugar concreto
+      description: Obtener info
+      operationId: getLugar
+      parameters:
+      - name: id
+        in: path
+        description: ID del lugar
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lugar'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lugar'
+        default:
+          description: Error al acceder al lugar
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/error'
+  put:
+    tags:
+      - lugar
+    summary: Modificar información de un lugar concreto
+    description: Modificar lugar
+    operationId: updateLugar
+    parameters:
+      - name: id
+        in: path
+        description: ID del lugar
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/lugar_editado'
+    responses:
+      "201":
+        description: Ok
+      default:
+        description: Error al acceder al lugar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error'
+
+  delete:
+    tags:
+      - lugar
+    summary: Borrar un lugar específico
+    description: Borrar lugar
+    operationId: deleteLugar
+    parameters:
+      - name: id
+        in: path
+        description: ID del lugar
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/id'
+    responses:
+      "200":
+        description: Ok
+      default:
+        description: Error al acceder al lugar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error'
+
   /animales/raza:
     get:
       tags:
@@ -401,15 +526,76 @@ components:
           Habitat:
           - África
           - Somalia
+    lugar:
+      type: object
+        properties:
+          id:
+            type: integer
+          nombre:
+            type: string
+          ubicacion:
+            type: string
+          animales:
+            type: array
+            items:
+              type: string
+          clima:
+            type: string
+          superficie:
+            type: number
+          visitantes_anuales:
+            type: number
+          required:
+            - id
+            - nombre
+            - ubicacion
+            - animales
+            - clima
+            - superficie
+            - visitantes_anuales
+    lugar_editado:
+      type: object
+      properties:
+        Nombre:
+          type: string
+        Ubicacion:
+          type: string
+        Animales:
+          type: array
+        Clima:
+          type: string
+        Superficie:
+          type: number
+        Visitantes_anuales:
+          type: number
+      required:
+        - Nombre
+        - Ubicacion
+        - Animales
+        - Clima
+        - Superficie
+        - Visitantes_anuales
+      example:
+        id: 5
+        nombre: Río
+        ubicacion: Selva Tropical, Uruguay
+        animales: Tiburones, Serpientes, Tortugas
+        clima: Húmedo
+        superficie: 394857 000 km²
+        visitantes_anuales: 400000
+
     habitat:
-      type: array
-      items:
-        $ref: '#/components/schemas/habitat'
+      type: object
+      properties:
+        array:
+          type: array
+        items:
+          $ref: '#/components/schemas/habitat'
       xml:
         wrapped: true
-    habitat:
-      type: string
-      example: Somalia
+      string:
+        type: string
+        example: Somalia
     
   parameters:
     id:
