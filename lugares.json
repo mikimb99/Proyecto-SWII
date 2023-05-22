@@ -1,0 +1,36 @@
+{
+  "lugares": [
+    {
+      "nombre": "Reserva Natural",
+      "ubicacion": "Selva Amazónica, Brasil",
+      "animales": ["Tigres", "Leones", "Elefantes", "Monos"],
+      "clima": "Tropical",
+      "superficie": "5000 hectáreas",
+      "visitantes_anuales": 100000
+    },
+    {
+      "nombre": "Parque Nacional",
+      "ubicacion": "Serengeti, Tanzania",
+      "animales": ["Leones", "Elefantes", "Jirafas", "Cebras"],
+      "clima": "Semiárido",
+      "superficie": "14763 km²",
+      "visitantes_anuales": 500000
+    },
+    {
+      "nombre": "Reserva Marina",
+      "ubicacion": "Gran Barrera de Coral, Australia",
+      "animales": ["Tiburones", "Tortugas Marinas", "Peces Tropicales"],
+      "clima": "Tropical",
+      "superficie": "348 000 km²",
+      "visitantes_anuales": 200000
+    },
+    {
+      "nombre": "Santuario de Vida Silvestre",
+      "ubicacion": "Península de Osa, Costa Rica",
+      "animales": ["Perezosos", "Monos", "Tucanes", "Jaguares"],
+      "clima": "Tropical Húmedo",
+      "superficie": "1633 km²",
+      "visitantes_anuales": 50000
+    }
+  ]
+}
