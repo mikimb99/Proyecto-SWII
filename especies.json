@@ -1,81 +1,27 @@
-{
-  "especies": [
-    {
-      "id": 1,
-      "nombre": "León",
-      "clase": "Mamífero",
-      "orden": "Carnívoro",
-      "familia": "Felidae"
-    },
+[
     {
       "id": 2,
-      "nombre": "Tigre",
-      "clase": "Mamífero",
-      "orden": "Carnívoro",
-      "familia": "Felidae"
+      "tipo": "Ave",
+      "descripcion": "Las aves son animales vertebrados, de sangre caliente, que se caracterizan por tener plumas, pico córneo, dos alas y dos patas."
     },
     {
       "id": 3,
-      "nombre": "Elefante",
-      "clase": "Mamífero",
-      "orden": "Proboscidea",
-      "familia": "Elephantidae"
+      "tipo": "Anfibio",
+      "descripcion": "Los anfibios son animales vertebrados que pasan parte de su vida en el agua y parte en la tierra, como las ranas y los sapos."
     },
     {
       "id": 4,
-      "nombre": "Jirafa",
-      "clase": "Mamífero",
-      "orden": "Artiodactyla",
-      "familia": "Giraffidae"
+      "tipo": "Reptil",
+      "descripcion": "Los reptiles son animales vertebrados que se caracterizan por tener escamas en su piel y por ser de sangre fría, como las serpientes y los cocodrilos."
     },
     {
       "id": 5,
-      "nombre": "Tortuga",
-      "clase": "Reptil",
-      "orden": "Testudines",
-      "familia": "Testudinidae"
+      "tipo": "Pez",
+      "descripcion": "Los peces son animales acuáticos que tienen branquias para respirar bajo el agua y se caracterizan por tener aletas y escamas en su cuerpo."
     },
     {
       "id": 6,
-      "nombre": "Águila",
-      "clase": "Ave",
-      "orden": "Accipitriformes",
-      "familia": "Accipitridae"
-    },
-    {
-      "id": 7,
-      "nombre": "Oso polar",
-      "clase": "Mamífero",
-      "orden": "Carnívoro",
-      "familia": "Ursidae"
-    },
-    {
-      "id": 8,
-      "nombre": "Pingüino",
-      "clase": "Ave",
-      "orden": "Sphenisciformes",
-      "familia": "Spheniscidae"
-    },
-    {
-      "id": 9,
-      "nombre": "Cocodrilo",
-      "clase": "Reptil",
-      "orden": "Crocodylia",
-      "familia": "Crocodylidae"
-    },
-    {
-      "id": 10,
-      "nombre": "Tiburón",
-      "clase": "Pez",
-      "orden": "Selachimorpha",
-      "familia": "Lamnidae"
-    },
-    {
-      "id": 11,
-      "nombre": "Orca",
-      "clase": "Mamífero",
-      "orden": "Cetacea",
-      "familia": "Delphinidae"
+      "tipo": "Mamífero",
+      "descripcion": "Los mamíferos son una clase de animales vertebrados que se caracterizan por tener glándulas mamarias que les permiten amamantar a sus crías y por ser de sangre caliente."
     }
-  ]
-}
+]
