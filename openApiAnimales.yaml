@@ -57,30 +57,62 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/animales_pagination'
-    post:
-      tags:
-        - animal
-      summary: Crear un nuevo animal
-      description: Crear animal
-      operationId: createAnimal
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/animal_editada'
-      responses:
-        "201":
-          description: Animal creado con éxito
+      post:
+        tags:
+          - animal
+        summary: Crear un nuevo animal
+        description: Crear animal
+        operationId: createAnimal
+        requestBody:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/info_nuevo_animal'
-        default:
-          description: Error al crear el animal
+                $ref: '#/components/schemas/animal_editada'
+        responses:
+          "201":
+            description: Animal creado con éxito
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/info_nuevo_animal'
+          default:
+            description: Error al crear el animal
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+    /especies:
+      get:
+        tags:
+          - especie
+        summary: Obtener todos los especies
+        description: Obtener un listado de todos las especies
+        operationId: getEspecies
+      post:
+        tags:
+          - especie
+        summary: Crear un nuevo especie
+        description: Crear especie
+        operationId: createEspecie
+        requestBody:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/especie_editada'
+        responses:
+          "201":
+            description: Especie creado con éxito
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/info_nueva_especie'
+          default:
+            description: Error al crear la especie
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+
   /lugares:
     get:
       summary: Obtener todos los lugares
@@ -152,6 +184,95 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/error'
+  /especies/{id}:
+    get:
+      tags:
+        - especie
+      summary: Obtener información de una especie concreta
+      description: Obtener info
+      operationId: getEspecie
+      parameters:
+        - name: id
+          in: path
+          description: ID de la especie
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/id'
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/especie'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/especie'
+        default:
+          description: Error al acceder a la especie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/error'
+    put:
+      tags:
+        - especie
+      summary: Modificar información de una especie concreta
+      description: Modificar especie
+      operationId: updateEspecie
+      parameters:
+        - name: id
+          in: path
+          description: ID de la especie
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/especie_editada'
+      responses:
+        "201":
+          description: Ok
+        default:
+          description: Error al acceder a la especie
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+      delete:
+        tags:
+          - especie
+        summary: Borrar una especie específica
+        description: Borrar especie
+        operationId: deleteEspecie
+        parameters:
+          - name: id
+            in: path
+            description: ID de la especie
+            required: true
+            style: simple
+            explode: false
+            schema:
+              $ref: '#/components/schemas/id'
+        responses:
+          "200":
+            description: Ok
+          default:
+            description: Error al acceder a la  especie
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
   /lugares/{id}:
     get:
       tags:
@@ -241,7 +362,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/error'
-
+#REVISAR /ANIMALES/RAZA Y ANIMALES/ESPECIE
   /animales/raza:
     get:
       tags:
@@ -449,7 +570,7 @@ components:
         - Habitat
         - Title
       example:
-        - _id: 1
+          _id: 1
           Title: Girafa
           Altura_media: 5,5 metros 
           Peso: 850 kg
@@ -459,15 +580,21 @@ components:
     especie:
       type: object
         properties:
-          especie:
+          id:
+            type: integer
+          tipo:
             type: string
-          animales:
-            type: array
-            items:
-              $ref: '#/components/schemas/animal'
+          descripcion:
+            type: string
+            nullable: true
         required:
-          - especie
-          - animales
+          - id
+          - tipo
+        example:
+          id: 4
+          tipo: Reptil
+          descripcion: Los reptiles son animales vertebrados que se caracterizan por tener escamas en su piel y por ser de sangre fría, como las serpientes y los cocodrilos.
+
     nuevo:
       type: object
         properties:
@@ -575,14 +702,23 @@ components:
         - Clima
         - Superficie
         - Visitantes_anuales
+    especie_editada:
+      type: object
+      properties:
+        Nombre:
+          type: string
+        Tipo:
+          type: string
+        Descripcion:
+          type: string
+      required:
+        - Nombre
+        - Tipo
+        - Descripcion
       example:
         id: 5
-        nombre: Río
-        ubicacion: Selva Tropical, Uruguay
-        animales: Tiburones, Serpientes, Tortugas
-        clima: Húmedo
-        superficie: 394857 000 km²
-        visitantes_anuales: 400000
+        nombre: Pez
+        descripcion: Los peces son animales acuáticos que tienen branquias para respirar bajo el agua y se caracterizan por tener aletas y escamas en su cuerpo.
 
     habitat:
       type: object
