@@ -1,0 +1,81 @@
+{
+  "especies": [
+    {
+      "id": 1,
+      "nombre": "León",
+      "clase": "Mamífero",
+      "orden": "Carnívoro",
+      "familia": "Felidae"
+    },
+    {
+      "id": 2,
+      "nombre": "Tigre",
+      "clase": "Mamífero",
+      "orden": "Carnívoro",
+      "familia": "Felidae"
+    },
+    {
+      "id": 3,
+      "nombre": "Elefante",
+      "clase": "Mamífero",
+      "orden": "Proboscidea",
+      "familia": "Elephantidae"
+    },
+    {
+      "id": 4,
+      "nombre": "Jirafa",
+      "clase": "Mamífero",
+      "orden": "Artiodactyla",
+      "familia": "Giraffidae"
+    },
+    {
+      "id": 5,
+      "nombre": "Tortuga",
+      "clase": "Reptil",
+      "orden": "Testudines",
+      "familia": "Testudinidae"
+    },
+    {
+      "id": 6,
+      "nombre": "Águila",
+      "clase": "Ave",
+      "orden": "Accipitriformes",
+      "familia": "Accipitridae"
+    },
+    {
+      "id": 7,
+      "nombre": "Oso polar",
+      "clase": "Mamífero",
+      "orden": "Carnívoro",
+      "familia": "Ursidae"
+    },
+    {
+      "id": 8,
+      "nombre": "Pingüino",
+      "clase": "Ave",
+      "orden": "Sphenisciformes",
+      "familia": "Spheniscidae"
+    },
+    {
+      "id": 9,
+      "nombre": "Cocodrilo",
+      "clase": "Reptil",
+      "orden": "Crocodylia",
+      "familia": "Crocodylidae"
+    },
+    {
+      "id": 10,
+      "nombre": "Tiburón",
+      "clase": "Pez",
+      "orden": "Selachimorpha",
+      "familia": "Lamnidae"
+    },
+    {
+      "id": 11,
+      "nombre": "Orca",
+      "clase": "Mamífero",
+      "orden": "Cetacea",
+      "familia": "Delphinidae"
+    }
+  ]
+}
