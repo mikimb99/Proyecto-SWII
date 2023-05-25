@@ -23,6 +23,35 @@ router.get('/search', async function(req, res, next) {
   res.json(result).status(200);
 });
 
+/*PAGINACION */
+router.get('/pagina', async function(req, res, next) {
+  const page = parseInt(req.query.page) || 1; // Página solicitada
+  const pageSize = parseInt(req.query.pageSize) || 10; // Tamaño de página (número de resultados por página)
+
+  const connection = dbo.getDb();
+  const totalCount = await connection.collection('animales').countDocuments();
+
+  const skip = (page - 1) * pageSize; // Número de resultados a omitir
+  const limit = pageSize; // Número máximo de resultados a devolver
+
+  let result = await connection.collection('animales')
+    .find({})
+    .skip(skip)
+    .limit(pageSize)
+    .toArray();
+
+  const response = {
+    page: page,
+    pageSize: pageSize,
+    totalCount: totalCount,
+    totalPages: Math.ceil(totalCount / pageSize),
+    results: result
+  };
+
+  res.json(response).status(200);
+});
+
+
 /* GET ANIMALES BY ID */
 router.get('/:id', async (req, res) => {
   console.log("/getAnById")
