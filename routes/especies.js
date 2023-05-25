@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const dbConnect = dbo.getDb();
   const especie= {
-    "id":req.body._id,
+    "_id":req.body._id,
     "tipo": req.body.tipo,
     "descripcion": req.body.descripcion,
   }
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const query = {_id: parseInt(req.params.id)};
   const update = {$set:{
-    "id": req.body.nombre,
+    "_id": req.body.nombre,
     "tipo": req.body.tipo,
     "descripcion": req.body.descripcion,
   }};
