@@ -23,11 +23,13 @@ var indexRouter = require('./routes/index')
 var animalesRouter = require('./routes/animales')
 var especiesRouter = require('./routes/especies')
 var lugaresRouter = require('./routes/lugares')
+var especiesXMLRouter = require('./routes/especiesXML')
 
 app.use('/', indexRouter);
 app.use('/animales', animalesRouter);
 app.use('/especies', especiesRouter);
 app.use('/lugares', lugaresRouter);
+app.use('/especiesXML', especiesXMLRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

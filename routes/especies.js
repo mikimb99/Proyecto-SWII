@@ -47,9 +47,9 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const query = {_id: parseInt(req.params.id)};
   const update = {$set:{
-    "_id": req.body.nombre,
+    "_id": req.body._id,
     "tipo": req.body.tipo,
-    "descripcion": req.body.descripcion,
+    "descripcion": req.body.descripcion
   }};
   const dbConnect = dbo.getDb();
   let result = await dbConnect
