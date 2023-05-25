@@ -7,7 +7,7 @@ const {ObjectID, ObjectId} = require("mongodb");
 router.get('/', async function(req, res, next) {
     console.log("/allEspecies")
     const connection = dbo.getDb();
-    let result = await connection.collection('especies').find({}).limit().toArray()
+    let result = await connection.collection('especies').find({}).toArray()
     res.json(result).status(200);
 
 });
