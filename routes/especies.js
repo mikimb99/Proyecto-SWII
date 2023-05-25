@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
   const especie= {
     "_id":req.body._id,
     "tipo": req.body.tipo,
-    "descripcion": req.body.descripcion,
+    "descripcion": req.body.descripcion
   }
   console.log(especie);
   let result = await dbConnect
