@@ -39,7 +39,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/filtro-peso/:valor', async (req, res) => {
+/* FILTRADO DE PESO POR MAYOR QUE*/
+router.get('/filter-peso/:valor', async (req, res) => {
   const dbConnect = dbo.getDb();
   const query = { peso: { $gt: parseInt(req.params.valor) } }; // Filtrar por peso mayor a un valor específico
   const result = await dbConnect.collection('animales').find(query).toArray();
