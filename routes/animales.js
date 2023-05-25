@@ -3,6 +3,7 @@ var router = express.Router();
 const dbo = require('../db/connect');
 const {ObjectID, ObjectId} = require("mongodb");
 
+
 /* GET all animales. */
 router.get('/', async function(req, res, next) {
     console.log("/allAnimales")
@@ -38,6 +39,7 @@ router.post('/', async (req, res) => {
     "peso": req.body.peso,
     "habitat": req.body.habitat
   }
+  
   console.log(animal);
   let result = await dbConnect
     .collection('animales')
