@@ -7,7 +7,7 @@ const {ObjectID, ObjectId} = require("mongodb");
 router.get('/', async function(req, res, next) {
     console.log("/allEspecies")
     const connection = dbo.getDb();
-    let result = await connection.collection('especies').find({}).limit(5).toArray()
+    let result = await connection.collection('especies').find({}).limit().toArray()
     res.json(result).status(200);
 
 });
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 //addAnimal()
 router.post('/', async (req, res) => {
   const dbConnect = dbo.getDb();
-  const animal={
+  const especie= {
     "id":req.body._id,
     "tipo": req.body.tipo,
     "descripcion": req.body.descripcion,

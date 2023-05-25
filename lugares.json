@@ -1,6 +1,6 @@
 [
     {
-      "id": 1,
+      "_id": 1,
       "nombre": "Reserva Natural",
       "ubicacion": "Selva Amazónica, Brasil",
       "animales": ["Tigres", "Leones", "Elefantes", "Monos"],
@@ -9,16 +9,16 @@
       "visitantes_anuales": 100000
     },
     {
-      "id": 2,
+      "_id": 2,
       "nombre": "Parque Nacional",
       "ubicacion": "Serengeti, Tanzania",
       "animales": ["Leones", "Elefantes", "Jirafas", "Cebras"],
-      "clima": "Semiárido",
+      "clima": "Semiár_ido",
       "superficie": "14763 km²",
       "visitantes_anuales": 500000
     },
     {
-      "id": 3,
+      "_id": 3,
       "nombre": "Reserva Marina",
       "ubicacion": "Gran Barrera de Coral, Australia",
       "animales": ["Tiburones", "Tortugas Marinas", "Peces Tropicales"],
@@ -27,8 +27,8 @@
       "visitantes_anuales": 200000
     },
     {
-      "id": 4,
-      "nombre": "Santuario de Vida Silvestre",
+      "_id": 4,
+      "nombre": "Santuario de V_ida Silvestre",
       "ubicacion": "Península de Osa, Costa Rica",
       "animales": ["Perezosos", "Monos", "Tucanes", "Jaguares"],
       "clima": "Tropical Húmedo",

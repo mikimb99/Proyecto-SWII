@@ -7,7 +7,7 @@ const {ObjectID, ObjectId} = require("mongodb");
 router.get('/', async function(req, res, next) {
     console.log("/allLugares")
     const connection = dbo.getDb();
-    let result = await connection.collection('lugares').find({}).limit(5).toArray()
+    let result = await connection.collection('lugares').find({}).limit().toArray()
     res.json(result).status(200);
 
 });
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
     "animales": req.body.animales,
     "clima": req.body.clima,
     "superficie": req.body.superficie,
-    "visitantes_anuales:" req.body.visitantes_anuales
+    "visitantes_anuales": req.body.visitantes_anuales
   }
   console.log(lugar);
   let result = await dbConnect
@@ -56,7 +56,7 @@ router.put('/:id', async (req, res) => {
     "animales": req.body.animales,
     "clima": req.body.clima,
     "superficie": req.body.superficie,
-    "visitantes_anuales:" req.body.visitantes_anuales
+    "visitantes_anuales": req.body.visitantes_anuales
   }};
   const dbConnect = dbo.getDb();
   let result = await dbConnect
