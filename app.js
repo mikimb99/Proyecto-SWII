@@ -30,7 +30,7 @@ app.use('/animales', animalesRouter);
 app.use('/especies', especiesRouter);
 app.use('/lugares', lugaresRouter);
 app.use('/especiesXML', especiesXMLRouter);
-
+app.use('/lugares', lugaresRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

@@ -12,6 +12,16 @@ router.get('/', async function(req, res, next) {
     res.json(result).status(200);
       
 });
+/* FILTRADO POR HABITAT */
+router.get('/search', async function(req, res, next) {
+  const connection = dbo.getDb();
+  const habitat = req.query.habitat; // Obtener el hábitat de los parámetros de consulta
+
+  // Realizar la consulta a la base de datos con el filtro de hábitat
+  let result = await connection.collection('animales').find({ habitat: habitat }).toArray();
+
+  res.json(result).status(200);
+});
 
 /* GET ANIMALES BY ID */
 router.get('/:id', async (req, res) => {
@@ -27,6 +37,13 @@ router.get('/:id', async (req, res) => {
   } else {
     res.status(200).json(result);
   }
+});
+
+router.get('/filtro-peso/:valor', async (req, res) => {
+  const dbConnect = dbo.getDb();
+  const query = { peso: { $gt: parseInt(req.params.valor) } }; // Filtrar por peso mayor a un valor específico
+  const result = await dbConnect.collection('animales').find(query).toArray();
+  res.status(200).json(result);
 });
 
 //addAnimal()
