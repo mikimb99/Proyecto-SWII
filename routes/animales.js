@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
     .collection('animales')
     .findOne(query);
   if (!result){
-    res.send("Not found").status(404);
+    res.status(404).send("Not found");
   } else {
     res.status(200).json(result);
   }
@@ -88,10 +88,16 @@ router.post('/', async (req, res) => {
   }
   
   console.log(animal);
+  try{
   let result = await dbConnect
     .collection('animales')
     .insertOne(animal);
-  res.status(201).send(result);
+    res.status(201).send("Creado correctamente");
+  }
+  catch{
+    res.status(200).send("NO Creado");
+  }
+
 });
 
 //updateAnimalById()
@@ -107,7 +113,13 @@ router.put('/:id', async (req, res) => {
   let result = await dbConnect
     .collection('animales')
     .updateOne(query, update);
-  res.status(200).send(result);
+  if(result.modifiedCount=== 1){
+    res.status(200).send("Modificado correctamente");
+  }
+  else{
+    res.status(200).send("No modificado");
+  }
+  
 });
 
 //deleteAnimalById()
@@ -117,7 +129,11 @@ router.delete('/:id', async (req, res) => {
   let result = await dbConnect
     .collection('animales')
     .deleteOne(query);
-  res.status(200).send(result);
+  if(result.deletedCount === 0){
+    res.status(200).send("No ha sido borrado");
+  }else {
+    res.status(200).send("Borrado correctamente");
+  }
 });
 
 module.exports = router;
