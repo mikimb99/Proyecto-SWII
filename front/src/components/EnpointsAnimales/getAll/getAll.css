@@ -4,6 +4,7 @@
     align-items: center;
     gap: 10px;   
     align-items: first baseline;
+    margin-top: 10px;
 }
 
 .animalCuadrado{
