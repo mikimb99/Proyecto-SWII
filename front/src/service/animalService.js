@@ -1,10 +1,18 @@
 import axios from "axios"
 
-export const getAllAnimales= async() =>{
+export const getAllAnimales2= async() =>{
     const url = "http://localhost:3000/animales/" 
     const result = await axios.get(url)
     return result
   }
+export const getAllAnimales= async(page) =>{
+    const pageSize=9
+    const url = "http://localhost:3000/animales/pagina"
+    //const url = `http://localhost:8080/book/allBooks/${orderBy}`
+    const result = await axios.get(url, {params: {page,pageSize}})
+    //const result = await axios.get(url)
+    return result
+}
 
   export const getAnimalById= async(id) =>{
     const url = "http://localhost:3000/animales/"+id

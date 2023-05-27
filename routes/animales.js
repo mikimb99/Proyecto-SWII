@@ -25,6 +25,7 @@ router.get('/search', async function(req, res, next) {
 
 /*PAGINACION */
 router.get('/pagina', async function(req, res, next) {
+  console.log("/pagina  "+req.query.page + " pagesixe: "+ req.query.pageSize )
   const page = parseInt(req.query.page) || 1; // Página solicitada
   const pageSize = parseInt(req.query.pageSize) || 10; // Tamaño de página (número de resultados por página)
 

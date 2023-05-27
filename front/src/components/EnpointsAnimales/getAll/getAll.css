@@ -1,0 +1,27 @@
+.listaAnimales{
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    align-items: center;
+    gap: 10px;   
+    align-items: first baseline;
+}
+
+.animalCuadrado{
+    border-width: 5px;
+    border-style:dotted;
+  border: 1px solid grey;
+      
+}
+
+.listaPaginas{
+    display: inline;
+    
+}
+
+.number{
+    margin-right: 5px;
+    margin-top: 10px;
+    background-color: beige;
+    width: 60px;
+    
+}
