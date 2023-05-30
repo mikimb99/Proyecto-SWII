@@ -4,11 +4,12 @@ const dbo = require('../db/connect');
 const {ObjectID, ObjectId} = require("mongodb");
 
 
-/* GET all animales. */
+/* GET all animales SOLO CAMPOS HABITAT,  TITLE Y ID NO,  */
 router.get('/', async function(req, res, next) {
     console.log("/allAnimales")
     const connection = dbo.getDb();
-    let result = await connection.collection('animales').find({}).limit(5).toArray()
+
+    let result = await connection.collection('animales').find({},{ projection: {_id:0,habitat: 1, title: 1 }}).limit(8).toArray()
     res.json(result).status(200);
       
 });
@@ -23,7 +24,7 @@ router.get('/search', async function(req, res, next) {
   res.json(result).status(200);
 });
 
-/*PAGINACION */
+/*PAGINACION, ES EL GET ALL! */
 router.get('/pagina', async function(req, res, next) {
   console.log("/pagina  "+req.query.page + " pagesixe: "+ req.query.pageSize )
   const page = parseInt(req.query.page) || 1; // Página solicitada
