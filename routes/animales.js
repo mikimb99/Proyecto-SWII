@@ -4,12 +4,18 @@ const dbo = require('../db/connect');
 const {ObjectID, ObjectId} = require("mongodb");
 
 
-/* GET all animales SOLO CAMPOS HABITAT,  TITLE Y ID NO,  */
+/* GET all animales SOLO CAMPOS HABITAT,  TITLE, si no quieres que salga el id-> _id:0,  */
 router.get('/', async function(req, res, next) {
     console.log("/allAnimales")
     const connection = dbo.getDb();
 
-    let result = await connection.collection('animales').find({},{ projection: {_id:0,habitat: 1, title: 1 }}).limit(8).toArray()
+    let result = await connection.collection('animales').find({},{ projection: {habitat: 1, title: 1 }}).limit(8).toArray()
+    
+    result.forEach(function(animal, index) {
+      animal.link= "/localhost/3000/" + animal._id
+      
+  });
+    
     res.json(result).status(200);
       
 });
