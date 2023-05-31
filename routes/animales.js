@@ -14,7 +14,7 @@ router.get('/', async function(req, res, next) {
     result.forEach(function(animal, index) {
       animal.link= "/localhost/3000/" + animal._id
       
-  });
+  });//
     
     res.json(result).status(200);
       
@@ -134,13 +134,18 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const query = {_id: parseInt(req.params.id)};
   const dbConnect = dbo.getDb();
+  try{
   let result = await dbConnect
     .collection('animales')
     .deleteOne(query);
   if(result.deletedCount === 0){
+    //res.status(404).send("No ha sido borrado");
     res.status(200).send("No ha sido borrado");
   }else {
     res.status(200).send("Borrado correctamente");
+  }}
+  catch{
+    res.status(400).send("Borrado correctamente");
   }
 });
 
