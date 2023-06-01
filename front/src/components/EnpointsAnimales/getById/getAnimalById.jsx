@@ -26,8 +26,11 @@ export default function AnimalById({params}){
             </div>
 
             ):(<div>
+                
+                {/*<img src="http://www.reactiongifs.com/r/2012/11/crying-man.gif" />*/}
+                <img src="https://media.tenor.com/NhLy4XWXsq4AAAAC/hasbulla-hasbullah.gif" />
+                <img src="https://gifdb.com/images/high/hasbulla-cute-smile-waving-hello-8kv2p5oa2v32st14.gif" />
                 <h2>ANIMAL NO ENCONTRADO</h2>
-                <img src="http://www.reactiongifs.com/r/2012/11/crying-man.gif" />
                 </div>)}
         </>
 
