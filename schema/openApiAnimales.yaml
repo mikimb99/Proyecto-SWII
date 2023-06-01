@@ -67,7 +67,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/animal_editada'
+                $ref: '#/components/schemas/animal_editado'
         responses:
           "201":
             description: Animal creado con éxito
@@ -147,7 +147,6 @@ paths:
                 application/json:
                   schema:
                     $ref: '#/components/schemas/error'
-
 
   /animales/{id}:
     get:
@@ -447,7 +446,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
- 
+
     delete:
       tags:
       - animal
@@ -472,7 +471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-  
+
   /animales/nuevos:
     get:
       tags:
@@ -498,7 +497,7 @@ components:
     id:
       minimum: 0
       type: integer
-   
+
     error:
       type: object
       properties:
@@ -533,14 +532,14 @@ components:
         data:
         - _id: 1
           Title: Girafa
-          Altura_media: 5,5 metros 
+          Altura_media: 5,5 metros
           Peso: 850 kg
           Habitat:
           - África
           - Somalia
         - _id: 2
           Title: Girafa
-          Altura_media: 5,5 metros 
+          Altura_media: 5,5 metros
           Peso: 850 kg
           Habitat:
           - África
@@ -572,14 +571,14 @@ components:
       example:
           _id: 1
           Title: Girafa
-          Altura_media: 5,5 metros 
+          Altura_media: 5,5 metros
           Peso: 850 kg
           Habitat:
           - África
           - Somalia
     especie:
       type: object
-        properties:
+      properties:
           id:
             type: integer
           tipo:
@@ -587,17 +586,17 @@ components:
           descripcion:
             type: string
             nullable: true
-        required:
+          required:
           - id
           - tipo
-        example:
-          id: 4
-          tipo: Reptil
-          descripcion: Los reptiles son animales vertebrados que se caracterizan por tener escamas en su piel y por ser de sangre fría, como las serpientes y los cocodrilos.
+          example:
+            id: 4
+            tipo: Reptil
+            descripcion: Los reptiles son animales vertebrados que se caracterizan por tener escamas en su piel y por ser de sangre fría, como las serpientes y los cocodrilos.
 
     nuevo:
       type: object
-        properties:
+      properties:
           _id:
             type: integer
             minimum: 0
@@ -610,13 +609,13 @@ components:
             $ref: '#/components/schemas/habitat'
           Title:
             type: string
-        required:
+          required:
           - _id
           - Altura_media
           - Peso
           - Habitat
           - Title
-        example:
+          example:
           - _id: 2
             Title: Hipopótamo
             Altura_media: 1,5 metros
@@ -644,18 +643,18 @@ components:
         - Altura_media
         - Peso
         - Habitat
-        
+
       example:
         - _id: 1
           Title: Girafa
-          Altura_media: 5,5 metros 
+          Altura_media: 5,5 metros
           Peso: 850 kg
           Habitat:
           - África
           - Somalia
     lugar:
       type: object
-        properties:
+      properties:
           id:
             type: integer
           nombre:
@@ -732,7 +731,7 @@ components:
       string:
         type: string
         example: Somalia
-    
+
   parameters:
     id:
       name: id
