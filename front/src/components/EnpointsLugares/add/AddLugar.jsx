@@ -16,7 +16,7 @@ export default function AddLugar (){
 
     const handleClick= async() => {
         const body = {
-            _id: _id,
+            _id: parseInt(_id),
             nombre: nombre,
             ubicacion: ubicacion,
             animales: animales,
