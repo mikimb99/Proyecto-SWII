@@ -61,10 +61,19 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const query = {_id: parseInt(req.params.id)};
   const dbConnect = dbo.getDb();
-  let result = await dbConnect
-    .collection('especies')
-    .deleteOne(query);
-  res.status(200).send("Borrado correctamente");
+  try{
+    let result = await dbConnect
+      .collection('especies')
+      .deleteOne(query);
+    if(result.deletedCount === 0){
+      res.status(400).send("No Borrado ");
+    }else{
+      res.status(200).send("Borrado correctamente");
+    }
+ 
+  }catch{
+    res.status(400).send("No Borrado ");
+  }
 });
 
 

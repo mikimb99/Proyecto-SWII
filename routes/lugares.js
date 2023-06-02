@@ -41,11 +41,15 @@ router.post('/', async (req, res) => {
     "visitantes_anuales": req.body.visitantes_anuales
   }
   console.log(lugar);
+  try{
   let result = await dbConnect
     .collection('lugares')
     .insertOne(lugar);
-  res.status(201).send("Creado correctamente");
-});
+    res.status(201).send("Creado correctamente");}
+  catch{
+    res.status(400).send("No creado ");}
+  }
+);
 
 //updateLugarbyId()
 router.put('/:id', async (req, res) => {
@@ -59,20 +63,33 @@ router.put('/:id', async (req, res) => {
     "visitantes_anuales": req.body.visitantes_anuales
   }};
   const dbConnect = dbo.getDb();
-  let result = await dbConnect
-    .collection('lugares')
-    .updateOne(query, update);
-  res.status(200).send("Cambiado correctamente");
+  try{
+    let result = await dbConnect
+      .collection('lugares')
+      .updateOne(query, update);
+    res.status(200).send("Cambiado correctamente");}
+  catch{
+    res.status(400).send("Error");
+  }
 });
 
 //deleteLugarbyID()
 router.delete('/:id', async (req, res) => {
   const query = {_id: parseInt(req.params.id)};
   const dbConnect = dbo.getDb();
-  let result = await dbConnect
+  try{
+    let result = await dbConnect
     .collection('lugares')
     .deleteOne(query);
-  res.status(200).send("Borrado correctamente");
+    if(result.deletedCount === 0){
+      res.status(400).send("No Borrado ");
+    }else{
+      res.status(200).send("Borrado correctamente");
+    }
+  }catch{
+    res.status(400).send("No Borrado ");
+  }
+  
 });
 
 

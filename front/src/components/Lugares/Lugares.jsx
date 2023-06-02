@@ -34,8 +34,11 @@ function Lugares (){
                 setLocation("/lugares/add")
             };
      const handleButtonDelete = async() => {
-                await deleteLugarById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})            
-            };
+        try{
+            await deleteLugarById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})            
+        }catch{
+            setResponse("No eliminado")
+        }};
                 
             
     return(

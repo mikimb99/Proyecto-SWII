@@ -15,13 +15,15 @@ import GetAllLugares from "./components/EnpointsLugares/getAll/getAllLugares";
 import LugarById from "./components/EnpointsLugares/getById/getLugarId";
 import UpdateLugarById from "./components/EnpointsLugares/updateById/updateLugar";
 import AddLugar from "./components/EnpointsLugares/add/AddLugar";
+import PortadaGif from "./components/portada/PortadaGif";
 
 export default function Routes (){
    
     return (
         <Router>
             <Switch>
-            <Route exact path="/" component={Portada} />
+            <Route exact path="/home" component={Portada} />
+            <Route exact path="/home/:animal" component={PortadaGif} />
             <Route exact path="/animales" component={Animales} />
             <Route exact path="/animales/getAll/:pagina" component={GetAll} />
             <Route exact path="/animales/add" component={AddAnimal} />

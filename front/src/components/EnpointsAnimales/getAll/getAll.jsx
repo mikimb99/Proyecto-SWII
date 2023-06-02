@@ -17,8 +17,12 @@ export default function GetAll({params}){
 
     const [filtrado, setFiltrado] =useState(false)
     useEffect(()=> {
+        try{
         getAllAnimales(pagina)
             .then((result) => {console.log(result);setAnimales(result.data.results); setMaxPags(result.data.totalPages); console.log(page); console.log(maxPags)})
+        }catch{
+            setAnimales([])
+        }
         
     },[])
 

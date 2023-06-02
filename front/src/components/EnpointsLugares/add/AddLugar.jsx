@@ -24,7 +24,13 @@ export default function AddLugar (){
             superficie:superficie,
             visitantes_anuales: parseInt(visitantes_anuales)
         }
-        await addLugarBy(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        try{
+            await addLugarBy(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        }
+        catch{
+            setResponse("No añadido")
+        }
+        
     };
 
     return(

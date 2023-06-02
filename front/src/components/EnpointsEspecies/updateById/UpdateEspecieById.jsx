@@ -25,7 +25,11 @@ export default function UpdateEspecieById({params}){
             descripcion: descripcion
         } 
         console.log("BODY:" + body.descripcion + body.tipo)
+       try{
         await updateEspecieById(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+       }catch{
+        setResponse("Error")
+       }
     };
 
     return(

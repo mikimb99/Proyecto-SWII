@@ -8,12 +8,12 @@ router.get('/:keyword', async function(req, res, next) {
     const params= {
             q: req.params.keyword,
             api_key: APIKey,
-            limit:5
+            limit:1
         }
     try {
         const response = await axios.get(url, { params });
-        console.log(response.data);
-        res.json(response.data).status(200);   
+        console.log(response.data.data[0].images)
+        res.json(response.data.data[0].images.original.url).status(200);   
     } catch (error) {
         console.error('Error:', error);
     }  

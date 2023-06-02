@@ -42,6 +42,7 @@ router.get('/pagina', async function(req, res, next) {
   const skip = (page - 1) * pageSize; // Número de resultados a omitir
   const limit = pageSize; // Número máximo de resultados a devolver
 
+  
   let result = await connection.collection('animales')
     .find({})
     .skip(skip)
@@ -55,8 +56,12 @@ router.get('/pagina', async function(req, res, next) {
     totalPages: Math.ceil(totalCount / pageSize),
     results: result
   };
-
-  res.json(response).status(200);
+  if(response.results.length===0){
+    res.status(400).json("No hay contenido");
+  }else{
+    res.json(response).status(200);
+  }
+  
 });
 
 
@@ -103,7 +108,7 @@ router.post('/', async (req, res) => {
     res.status(201).send("Creado correctamente");
   }
   catch{
-    res.status(200).send("NO Creado");
+    res.status(400).send(" No creado");
   }
 
 });
@@ -125,7 +130,7 @@ router.put('/:id', async (req, res) => {
     res.status(200).send("Modificado correctamente");
   }
   else{
-    res.status(200).send("No modificado");
+    res.status(400).send("No modificado");
   }
 });
 
@@ -139,7 +144,7 @@ router.delete('/:id', async (req, res) => {
         .deleteOne(query);
       if(result.deletedCount === 0){
         //res.status(404).send("No ha sido borrado");
-        res.status(200).send("No ha sido borrado");
+        res.status(400).send("No ha sido borrado");
       }else {
         res.status(200).send("Borrado correctamente");
       }}

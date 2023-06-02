@@ -23,7 +23,12 @@ export default function AddAnimal(){
             peso: parseInt(peso),
             habitat: habitat
         } 
-        await addAnimalBy(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        try{
+            await addAnimalBy(body).then((result) =>{ setResponse(result.data)})  
+        }catch{
+            setResponse("No creado")
+        }
+       
     };
    
 

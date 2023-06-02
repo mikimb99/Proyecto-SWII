@@ -35,7 +35,12 @@ function Animales (){
         setLocation("/animales/update/"+updatebyId)
     };
     const handleButtonDelete = async() => {
-        await deleteAnimalById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})            
+        try{
+            await deleteAnimalById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})   
+        }catch{
+            setResponse("Error");
+        }
+                 
     };
     const handleButtonClickAdd = () => {
         setLocation("/animales/add")

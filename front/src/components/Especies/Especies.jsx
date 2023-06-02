@@ -38,7 +38,12 @@ function Especies (){
     };
 
     const handleButtonDelete = async() => {
-        await deleteEspecieById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})            
+        try{
+        await deleteEspecieById(deletebyId).then((result) =>{ setResponse(result.data); console.log(response)})     
+        }
+        catch{
+            setResponse("No eliminado")
+        }       
     };
     
     return(

@@ -29,7 +29,12 @@ export default function UpdateById({params}){
             peso: peso,
             habitat: habitat
         } 
-        await updateAnimalById(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        try{
+            await updateAnimalById(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        }catch{
+            setResponse("Error");
+        }
+        
     };
    
 

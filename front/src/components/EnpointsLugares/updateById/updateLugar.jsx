@@ -34,7 +34,12 @@ export default function UpdateLugarById({params}){
             visitantes_anuales: parseInt(visitantes_anuales)
         } 
         console.log("BODY:" + body.descripcion + body.tipo)
+        try{
         await updateLugarById(body).then((result) =>{ setResponse(result.data); console.log(response)})  
+        }
+        catch{
+            setResponse("No actualizado")
+        }
     };
 
     return(
