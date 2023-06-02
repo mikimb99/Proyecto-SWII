@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const dbConnect = dbo.getDb();
   const lugar={
-    "id":req.body._id,
+    "_id": req.body._id,
     "nombre": req.body.nombre,
     "ubicacion": req.body.ubicacion,
     "animales": req.body.animales,
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
   let result = await dbConnect
     .collection('lugares')
     .insertOne(lugar);
-  res.status(201).send(result);
+  res.status(201).send("Creado correctamente");
 });
 
 //updateLugarbyId()
@@ -72,7 +72,7 @@ router.delete('/:id', async (req, res) => {
   let result = await dbConnect
     .collection('lugares')
     .deleteOne(query);
-  res.status(200).send(result);
+  res.status(200).send("Borrado correctamente");
 });
 
 
