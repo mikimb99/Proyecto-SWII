@@ -46,7 +46,7 @@ export default function UpdateLugarById({params}){
         <>
             <Link to="/lugares"><h1>LUGARES</h1></Link>
             {lugar?(<div>
-                <p><b>Id: </b><input type="text" value={_id} onChange={(idAn) => setId(idAn.target.value)}></input> </p>
+
                 <p><b>Nombre: </b><input type="text"  value={nombre} onChange={(tip) => setNombre(tip.target.value)}></input> </p>
                 <p><b>Ubicación: </b><input type="text"  value={ubicacion} onChange={(ub) => setUbicacion(ub.target.value)}></input> </p>
                 <p><b>Animales: </b><input type="text"  value={animales.join(",")} onChange={(anim) => {setAnimales(anim.target.value.split(',')); console.log(animales)}}></input> </p>

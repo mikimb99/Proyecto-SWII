@@ -21,10 +21,10 @@ export default function GetAllEspecies(){
         <>
             <Link to="/especies"><h1>ESPECIES</h1></Link>
            
-            <div className="listaAnimales">
+            <div className="listaAnimales2">
             {especies.map(({_id, tipo, descripcion },i)=>{
                 return(
-                    <div key={_id} className="animalCuadrado">    
+                    <div key={_id} className="animalCuadrado2">    
                             <p><b>Id: </b> {_id}</p>
                             <p><b>Tipo: </b> {tipo}</p>
                             <p><b>Descripción: </b> {descripcion}</p>                  

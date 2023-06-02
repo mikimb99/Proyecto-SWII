@@ -20,10 +20,10 @@ export default function GetAllLugares(){
         <>
             <Link to="/lugares"><h1>LUGARES</h1></Link>
            
-            <div className="listaAnimales">
+            <div className="listaAnimales3">
             {lugares.map(({_id, nombre, ubicacion,animales,clima,superficie,visitantes_anuales },i)=>{
                 return(
-                    <div key={_id} className="animalCuadrado">    
+                    <div key={_id} className="animalCuadrado3">    
                             <p><b>Id: </b> {_id}</p>
                             <p><b>Nombre: </b> {nombre}</p>
                             <p><b>Ubicacion: </b> {ubicacion}</p>    

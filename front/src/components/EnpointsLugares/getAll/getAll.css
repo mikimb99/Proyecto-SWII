@@ -1,4 +1,4 @@
-.listaAnimales{
+.listaAnimales3{
     display: grid;
     grid-template-columns: 400px 400px 400px;
     align-items: center;
@@ -7,7 +7,7 @@
     margin-top: 10px;
 }
 
-.animalCuadrado{
+.animalCuadrado3{
     border-width: 5px;
     border-style:dotted;
   border: 1px solid grey;

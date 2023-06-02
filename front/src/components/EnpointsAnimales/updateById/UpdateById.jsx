@@ -42,7 +42,6 @@ export default function UpdateById({params}){
         <>
             <Link to="/animales"><h1>ANIMALES</h1></Link>
             {animal?(<div>
-                <p><b>Id: </b><input type="text" value={_id} onChange={(idAn) => setId(idAn.target.value)}></input> </p>
                 <p><b>Nombre animal: </b><input type="text"  value={title} onChange={(titulo) => setTitle(titulo.target.value)}></input> </p>
                 <p><b>Altura media: </b><input type="text"  value={altura_media} onChange={(altura) => setAltura(altura.target.value)}></input> </p>
                 <p><b>Peso: </b><input type="text"  value={peso} onChange={(pesa) => setPeso(pesa.target.value)}></input> </p>
