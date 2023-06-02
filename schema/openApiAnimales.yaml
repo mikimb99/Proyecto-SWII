@@ -17,47 +17,17 @@ tags:
 paths:
   /animales:
     get:
-      tags:
-      - animal
       summary: Obtener todos los animales
-      description: Obtener un listado de todos las animales
-      operationId: getAnimales
-      parameters:
-      - name: page
-        in: query
-        description: pagina solicitada
-        required: false
-        style: form
-        explode: false
-        schema:
-          minimum: 1
-          type: integer
-      - name: page_size
-        in: query
-        description: Cantidad de animales solicitados
-        required: false
-        style: form
-        explode: false
-        schema:
-          minimum: 1
-          type: integer
-      - name: search
-        in: query
-        description: animal a buscar
-        required: false
-        style: form
-        explode: true
-        schema:
-          minimum: 1
-          type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/animales_pagination'
-      post:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
+    post:
         tags:
           - animal
         summary: Crear un nuevo animal
@@ -67,20 +37,150 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/nuevo_animal'
+        responses:
+          '201':
+            description: Creado correctamente
+          '400':
+            description: No creado
+    /animales/search:
+      get:
+        summary: Buscar animales por hábitat
+        parameters:
+          - in: query
+            name: habitat
+            required: true
+            schema:
+              type: string
+            description: Hábitat para filtrar los animales
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/animal'
+    /animales/pagina:
+      get:
+        summary: Obtener animales paginados
+        parameters:
+          - in: query
+            name: page
+            schema:
+              type: integer
+            description: Número de página solicitada
+          - in: query
+            name: pageSize
+            schema:
+              type: integer
+            description: Tamaño de página (número de resultados por página)
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    page:
+                      type: integer
+                      description: Número de página actual
+                    pageSize:
+                      type: integer
+                      description: Tamaño de página
+                    totalCount:
+                      type: integer
+                      description: Total de resultados
+                    totalPages:
+                      type: integer
+                      description: Total de páginas
+                    results:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/animal'
+          '400':
+            description: No hay contenido
+            content:
+              application/json:
+                schema:
+                  type: string
+
+    /animales/{id}:
+      put:
+        summary: Actualizar un animal por ID
+        parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: integer
+            description: ID del animal a actualizar
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
                 $ref: '#/components/schemas/animal_editado'
         responses:
-          "201":
-            description: Animal creado con éxito
+          '200':
+            description: Modificado correctamente
+          '400':
+            description: No modificado
+        get:
+          summary: Obtener un animal por ID
+          parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                type: integer
+              description: ID del animal a buscar
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/animal'
+            '404':
+              description: Animal no encontrado
+        delete:
+          summary: Eliminar un animal por ID
+          parameters:
+            - in: path
+              name: id
+              required: true
+              schema:
+                type: integer
+              description: ID del animal a eliminar
+          responses:
+            '200':
+              description: Borrado correctamente
+            '400':
+              description: No ha sido borrado
+            '404':
+              description: Animal no encontrado
+    /animales/filter-peso/{valor}:
+      get:
+        summary: Filtrar animales por peso mayor a un valor específico
+        parameters:
+          - in: path
+            name: valor
+            required: true
+            schema:
+              type: integer
+            description: Valor para filtrar los animales por peso
+        responses:
+          '200':
+            description: OK
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/info_nuevo_animal'
-          default:
-            description: Error al crear el animal
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/animal'
     /especies:
       get:
         tags:
@@ -148,41 +248,6 @@ paths:
                   schema:
                     $ref: '#/components/schemas/error'
 
-  /animales/{id}:
-    get:
-      tags:
-      - animal
-      summary: Obtener información de un animal concreto
-      description: Obtener info
-      operationId: getAnimal
-      parameters:
-      - name: id
-        in: path
-        description: ID del animal
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: '#/components/schemas/id'
-      responses:
-        "200":
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/animal'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/animal'
-        default:
-          description: Error al acceder al animal
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/error'
   /especies/{id}:
     get:
       tags:
