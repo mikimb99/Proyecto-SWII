@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
   let result = await dbConnect
     .collection('lugares')
     .updateOne(query, update);
-  res.status(200).send(result);
+  res.status(200).send("Cambiado correctamente");
 });
 
 //deleteLugarbyID()
