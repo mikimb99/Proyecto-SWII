@@ -23,7 +23,7 @@ Las dependencias se instalarán usando el comando `npm ci`, tanto en la carpeta 
 Iniciar el servicio web con `npm start`, tanto en /Proyecto-SWII (servidor
 ) como en /front (cliente).
 
-Se ejecutarán en http://localhost:3000 y http://localhost:5174 respectivamente
+Se ejecutarán en http://localhost:3000 y http://localhost:5174/home respectivamente
 
 #### Realizar peticiones:
 
