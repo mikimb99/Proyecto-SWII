@@ -43,7 +43,7 @@ function Lugares (){
             
     return(
         <>
-            <Link to="/"><h1>LUGARES</h1></Link>
+            <Link to="/home"><h1>LUGARES</h1></Link>
             <button className="boton" onClick={handleButtonClickAll}>/getAllLugares</button> <br/>
             <button className="boton" onClick={handleButtonClick}>/getLugarById</button>{isVisibleGet&& <div><input type="number" placeholder="Introduce el ID" style={{display: "inline"}} value={byId} onChange={(id) => setById(id.target.value)}></input> <button className="boton" style={{display: "inline", backgroundColor:'#F1F7B6'}} onClick={handleButtonGet}>buscar</button></div>} <br/>
             <button className="boton"onClick={handleButtonClick3}>/updateLugar</button>{isVisibleUpdate&& <div><input type="number" placeholder="Introduce el ID"  style={{display: "inline"}} value={updatebyId} onChange={(id2) => setUpdateById(id2.target.value)}></input> <button className="boton" style={{display: "inline",backgroundColor:'#F7D8B6'}} onClick={handleButtonUpdate}>modificar</button></div>}<br/>

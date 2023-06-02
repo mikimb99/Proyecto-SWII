@@ -36,6 +36,7 @@ export default function UpdateEspecieById({params}){
         <>
             <Link to="/especies"><h1>ESPECIES</h1></Link>
             {especie?(<div>
+                
                 <p><b>Tipo: </b><input type="text"  value={tipo} onChange={(tip) => setTipo(tip.target.value)}></input> </p>
                 <p><b>Descripción: </b></p>
                 <textarea className="descrip" value={descripcion} onChange={(descr) => setDescripcion(descr.target.value)}></textarea> <br/>
