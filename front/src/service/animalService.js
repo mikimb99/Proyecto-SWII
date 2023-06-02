@@ -38,10 +38,7 @@ export const deleteAnimalById= async (id)=>{
 }
 
 export const updateAnimalById= async (body)=>{
-   
     const url= "http://localhost:3000/animales/"+body._id
-
-    
     const result= await axios.put(url,body)
     return result
 }

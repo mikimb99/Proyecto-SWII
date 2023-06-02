@@ -1,0 +1,7 @@
+.descrip{
+    width: 300px;
+    height: 100px;
+    box-sizing: border-box;
+    text-align: justify;
+    word-wrap: break-word;
+}
