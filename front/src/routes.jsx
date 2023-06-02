@@ -8,6 +8,9 @@ import UpdateById from "./components/EnpointsAnimales/updateById/UpdateById";
 import AddAnimal from "./components/EnpointsAnimales/add/AddAnimal";
 import GetAll from "./components/EnpointsAnimales/getAll/getAll";
 import GetAllEspecies from "./components/EnpointsEspecies/getAll/getAllEspecies";
+import EspecieById from "./components/EnpointsEspecies/getById/getEspecieById";
+import UpdateEspecieById from "./components/EnpointsEspecies/updateById/UpdateEspecieById";
+import AddEspecie from "./components/EnpointsEspecies/add/AddEspecie";
 
 export default function Routes (){
    
@@ -22,6 +25,9 @@ export default function Routes (){
             <Route exact path="/animales/update/:id" component={UpdateById} />
             <Route exact path="/especies" component={Especies} />
             <Route exact path="/especies/all" component={GetAllEspecies} />
+            <Route exact path="/especies/add" component={AddEspecie} />
+            <Route exact path="/especies/:id" component={EspecieById} />
+            <Route exact path="/especies/update/:id" component={UpdateEspecieById} />
             <Route exact path="/lugares" component={Lugares} />
             </Switch>
         </Router>
