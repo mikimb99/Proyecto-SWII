@@ -22,6 +22,7 @@ export default function UpdateLugarById({params}){
         
     },[])
 
+    
     const handleClick= async() => {
         const body = {
             _id: _id,
@@ -43,10 +44,10 @@ export default function UpdateLugarById({params}){
                 <p><b>Id: </b><input type="text" value={_id} onChange={(idAn) => setId(idAn.target.value)}></input> </p>
                 <p><b>Nombre: </b><input type="text"  value={nombre} onChange={(tip) => setNombre(tip.target.value)}></input> </p>
                 <p><b>Ubicación: </b><input type="text"  value={ubicacion} onChange={(ub) => setUbicacion(ub.target.value)}></input> </p>
-                <p><b>Animales: </b><input type="text"  value={animales.join(",")} onChange={(anim) => {setAnimales(anim.target.value.split(', ')); console.log(animales)}}></input> </p>
+                <p><b>Animales: </b><input type="text"  value={animales.join(",")} onChange={(anim) => {setAnimales(anim.target.value.split(',')); console.log(animales)}}></input> </p>
                 <p><b>Clima: </b><input type="text"  value={clima} onChange={(clim) => setClima(clim.target.value)}></input> </p>
                 <p><b>Superficie: </b><input type="text"  value={superficie} onChange={(sup) => setSuperficie(sup.target.value)}></input> </p>
-                <p><b>Visitantes: </b><input type="text"  value={visitantes_anuales} onChange={(vis) => setSuperficie(vis.target.value)}></input> </p>
+                <p><b>Visitantes: </b><input type="text"  value={visitantes_anuales} onChange={(vis) => setVisitantes(vis.target.value)}></input> </p>
                 <button onClick={handleClick}>MODIFICAR</button>
                 {response? <div><p><b>Resultado:</b> {response} </p> <br/></div>:"" }
             </div>

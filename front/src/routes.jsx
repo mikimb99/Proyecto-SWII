@@ -14,6 +14,7 @@ import AddEspecie from "./components/EnpointsEspecies/add/AddEspecie";
 import GetAllLugares from "./components/EnpointsLugares/getAll/getAllLugares";
 import LugarById from "./components/EnpointsLugares/getById/getLugarId";
 import UpdateLugarById from "./components/EnpointsLugares/updateById/updateLugar";
+import AddLugar from "./components/EnpointsLugares/add/AddLugar";
 
 export default function Routes (){
    
@@ -33,6 +34,7 @@ export default function Routes (){
             <Route exact path="/especies/update/:id" component={UpdateEspecieById} />
             <Route exact path="/lugares" component={Lugares} />
             <Route exact path="/lugares/all" component={GetAllLugares} />
+            <Route exact path="/lugares/add" component={AddLugar} />
             <Route exact path="/lugares/update/:id" component={UpdateLugarById} />
             <Route exact path="/lugares/:id" component={LugarById} />
 
