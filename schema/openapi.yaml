@@ -183,106 +183,45 @@ paths:
                     $ref: '#/components/schemas/animal'
     /especies:
       get:
-        tags:
-          - especie
-        summary: Obtener todos los especies
-        description: Obtener un listado de todos las especies
-        operationId: getEspecies
-      post:
-        tags:
-          - especie
-        summary: Crear un nuevo especie
-        description: Crear especie
-        operationId: createEspecie
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/especie_editada'
+        summary: Obtener todas las especies
         responses:
-          "201":
-            description: Especie creado con éxito
+          '200':
+            description: Respuesta exitosa
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/info_nueva_especie'
-          default:
-            description: Error al crear la especie
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/especie'
+          '404':
+            description: Error al buscar especies
             content:
-              application/json:
+              application/xml:
                 schema:
-                  $ref: '#/components/schemas/error'
-
-  /lugares:
-    get:
-      summary: Obtener todos los lugares
-      responses:
-        '200':
-          description: Respuesta exitosa
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Lugar'
-    post:
-        summary: Crear un nuevo lugar
-        description: Crear lugar
-        operationId: createLugar
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lugar_editada'
-        responses:
-            "201":
-              description: Lugar creado con éxito
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/info_nuevo_lugar'
-            default:
-              description: Error al crear el lugar
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/error'
-
-  /especies/{id}:
-    get:
-      tags:
-        - especie
-      summary: Obtener información de una especie concreta
-      description: Obtener info
-      operationId: getEspecie
-      parameters:
-        - name: id
-          in: path
-          description: ID de la especie
-          required: true
-          style: simple
-          explode: false
-          schema:
-            $ref: '#/components/schemas/id'
-      responses:
-        "200":
-          description: Ok
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/especie'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/especie'
-        default:
-          description: Error al acceder a la especie
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/error'
+                  type: string
+        /{id}:
+          get:
+            summary: Obtener una especie por su ID
+            parameters:
+              - name: id
+                in: path
+                description: ID de la especie
+                required: true
+                schema:
+                  type: integer
+            responses:
+              '200':
+                description: Respuesta exitosa
+                content:
+                  application/json:
+                    schema:
+                     $ref: '#/components/schemas/especie'
+              '404':
+                description: Error al acceder a la especie
+                content:
+                  application/xml:
+                    schema:
+                      type: string
     put:
       tags:
         - especie
@@ -337,6 +276,33 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/error'
+
+  /lugares:
+    get:
+      summary: Obtener todos los lugares
+      responses:
+        '200':
+          description: Respuesta exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/lugar'
+    post:
+        summary: Crear un nuevo lugar
+        description: Crear lugar
+        operationId: createLugar
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lugar_editada'
+        responses:
+          "201":
+            description: Lugar creado correctamente
+          "400":
+            description: Error al crear el lugar
   /lugares/{id}:
     get:
       tags:
@@ -363,144 +329,112 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/lugar'
-        default:
-          description: Error al acceder al lugar
+        '404':
+          description: Lugar no encontrado
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/error'
-  put:
-    tags:
-      - lugar
-    summary: Modificar información de un lugar concreto
-    description: Modificar lugar
-    operationId: updateLugar
-    parameters:
-      - name: id
-        in: path
-        description: ID del lugar
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: '#/components/schemas/id'
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/lugar_editado'
-    responses:
-      "201":
-        description: Ok
-      default:
-        description: Error al acceder al lugar
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/error'
-
-  delete:
-    tags:
-      - lugar
-    summary: Borrar un lugar específico
-    description: Borrar lugar
-    operationId: deleteLugar
-    parameters:
-      - name: id
-        in: path
-        description: ID del lugar
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: '#/components/schemas/id'
-    responses:
-      "200":
-        description: Ok
-      default:
-        description: Error al acceder al lugar
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/error'
+                type: string
     put:
       tags:
-      - animal
-      summary: Modificar información de un animal concreto
-      description: Modificar animal
-      operationId: updateAnimal
+        - lugar
+      summary: Modificar información de un lugar concreto
+      description: Modificar lugar
+      operationId: updateLugar
       parameters:
-      - name: id
-        in: path
-        description: ID del animal
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: '#/components/schemas/id'
+        - name: id
+          in: path
+          description: ID del lugar
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/id'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/animal_editado'
+              $ref: '#/components/schemas/lugar_editado'
       responses:
         "201":
           description: Ok
-        default:
-          description: Error al acceder al animal
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+        '400':
+          description: Error al actualizar el lugar
 
     delete:
       tags:
-      - animal
-      summary: Borrar un animal específico
-      description: Borrar animal
-      operationId: deleteAnimal
+        - lugar
+      summary: Borrar un lugar específico
+      description: Borrar lugar
+      operationId: deleteLugar
       parameters:
-      - name: id
-        in: path
-        description: ID del animal
-        required: true
-        style: simple
-        explode: false
-        schema:
-          $ref: '#/components/schemas/id'
+        - name: id
+          in: path
+          description: ID del lugar
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/id'
       responses:
         "200":
           description: Ok
-        default:
-          description: Error al acceder al animal
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
-
-  /animales/nuevos:
-    get:
-      tags:
+        '400':
+          description: Error al eliminar el lugar
+      put:
+        tags:
         - animal
-      summary: Obtener Un listado de los nuevos animales
-      description: Obtiene un listado con los nuevos animales y sus enlaces
-      operationId: getNuevos
+        summary: Modificar información de un animal concreto
+        description: Modificar animal
+        operationId: updateAnimal
+        parameters:
+        - name: id
+          in: path
+          description: ID del animal
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/schemas/id'
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/animal_editado'
+        responses:
+          "201":
+            description: Ok
+          default:
+            description: Error al acceder al animal
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+
+  /gifs/{keyword}:
+    get:
+      summary: Obtener GIF por palabra clave
+      parameters:
+        - name: keyword
+          in: path
+          required: true
+          description: Palabra clave para buscar GIF
+          schema:
+            type: string
       responses:
-        "200":
-          description: Ok
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/nuevos'
-        default:
-          description: Error al acceder a los nuevos animales
+                type: string
+        '404':
+          description: Error al buscar el GIF
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/error'
+                type: string
+
 components:
   schemas:
     id:
