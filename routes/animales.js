@@ -4,7 +4,7 @@ const dbo = require('../db/connect');
 const {ObjectID, ObjectId} = require("mongodb");
 
 
-/* GET all animales SOLO CAMPOS HABITAT,  TITLE, si no quieres que salga el id-> _id:0,  */
+/* GET all animales SOLO CAMPOS HABITAT, TITLE, si no quieres que salga el id-> _id:0,  */
 router.get('/', async function(req, res, next) {
     console.log("/allAnimales")
     const connection = dbo.getDb();
@@ -99,7 +99,11 @@ router.post('/', async (req, res) => {
     "peso": req.body.peso,
     "habitat": req.body.habitat
   }
-  
+  //COMPROBACIÓN DE LOS CAMPOS REQUIRED DEL OPENAPI
+  if (req.body.title === undefined || req.body.peso === undefined) ||req.body.altura_media === undefined{
+  res.status(405).send("Invalid input")
+  }
+  else{
   console.log(animal);
   try{
   let result = await dbConnect
@@ -110,7 +114,7 @@ router.post('/', async (req, res) => {
   catch{
     res.status(400).send(" No creado");
   }
-
+}
 });
 
 //updateAnimalById()
